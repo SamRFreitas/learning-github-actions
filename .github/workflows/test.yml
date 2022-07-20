@@ -40,7 +40,7 @@ jobs:
   
   merge:
     name: Merge Pull Request
-    needs: [dale]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - run: echo "Merged"
