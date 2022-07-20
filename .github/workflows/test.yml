@@ -19,8 +19,8 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
     
-  build:
-    name: Build
+  build-test:
+    name: Build and Test
     needs: [Explore-GitHub-Actions]
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +38,7 @@ jobs:
         run: npm test
       - run: echo "Build process finished"
   
-  merge:
+  merge-pull-request:
     name: Merge Pull Request
     needs: [build]
     runs-on: ubuntu-latest
