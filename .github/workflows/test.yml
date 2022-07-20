@@ -40,7 +40,7 @@ jobs:
   
   open-pull-request:
     name: Merge Pull Request
-    needs: [build]
+    needs: [build-test]
     runs-on: ubuntu-latest
     steps:
       - run: echo "Merged"
