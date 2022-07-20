@@ -1,5 +1,7 @@
 name: Learning Github Actions
+
 on: [push]
+
 jobs:
   Explore-GitHub-Actions:
     name: Learning Github Actions
@@ -22,20 +24,23 @@ jobs:
     needs: [Explore-GitHub-Actions]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: echo "Building the project"
-      - run: echo "Write steps to build the application, probably a node application"
-  
-  test:
-    name: Test
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Run all the tests"
-      - run: echo "All tests passed"
+      - name: Using Node.js 16
+        uses: actions/checkout@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - run: npm run build --if-present
+      - name: Run Tests
+        run: npm test
+      - run: echo "Build process finished"
   
   merge:
     name: Merge Pull Request
-    needs: [test]
+    needs: [dale]
     runs-on: ubuntu-latest
     steps:
       - run: echo "Merged"
