@@ -46,7 +46,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: pull-request
       id: open-pr
-      uses: repo-sync/pull-request@v2d
+      uses: repo-sync/pull-request@v2
       with:
         destination_branch: "develop"
         github_token: ${{ env.GITHUB_TOKEN }}
