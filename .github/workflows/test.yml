@@ -39,9 +39,26 @@ jobs:
       - run: echo "Build process finished"
   
   open-pull-request:
-    name: Merge Pull Request
+    name: Open Pull Request
     needs: [build-test]
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: pull-request
+      id: open-pr
+      uses: repo-sync/pull-request@v2
+      env:
+        github_token: ${{ secrets.TEST_TOKEN }}
+      with:
+        destination_branch: "develop"
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  just-test:
+    name: Just Test
+    needs: [build-test]
+    runs-on: ubuntu-latest
+    env:
+      SECRET_VALUE: ${{ secrets.TEST_TOKEN }}
     steps:
       - run: echo "Merged"
       - run: echo "Finish"
