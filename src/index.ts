@@ -2,7 +2,7 @@ import { sum } from "./sum/sum"
 
 const result = sum(2, 2)
 console.log(result)
-
+//dale
 const express = require("express")
 import { Express, Request, Response } from 'express'
 const app: Express = express()
