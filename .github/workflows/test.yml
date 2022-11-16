@@ -23,24 +23,24 @@ jobs:
   #         ls ${{ github.workspace }}
   #     - run: echo "🍏 This job's status is ${{ job.status }}."
     
-  # build-test:
-  #   name: Build and Test
-  #   needs: [Explore-GitHub-Actions]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - run: echo "Building the project"
-  #     - name: Using Node.js 16
-  #       uses: actions/checkout@v3
-  #       with:
-  #         node-version: 16
-  #         cache: 'npm'
-  #     - name: Install dependencies
-  #       run: npm ci
-  #     - run: npm run build --if-present
-  #     - name: Run Tests
-  #       run: npm test
-  #     - run: echo "Build process finished"
+  build-test:
+    name: Build and Test
+    # needs: [Explore-GitHub-Actions]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Building the project"
+      - name: Using Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - run: npm run build --if-present
+      - name: Run Tests
+        run: npm test
+      - run: echo "Build process finished"
   
   open-pull-request:
     name: Open Pull Request
