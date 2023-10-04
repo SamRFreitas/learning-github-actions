@@ -58,7 +58,7 @@ jobs:
 
   just-test:
     name: Just Test
-    needs: [open-pull-request]
+    # needs: [open-pull-request]
     runs-on: ubuntu-latest
     steps:
       - run: echo "Merged"
