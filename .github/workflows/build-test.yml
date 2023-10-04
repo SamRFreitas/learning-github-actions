@@ -39,12 +39,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
       # Vinicim brigou comigo, so porque e inutil :(
-      #- run: npm run build --if-present
+      - run: npm run build --if-present
       - name: Run Tests
         run: npm test
       - run: echo "Build process finished"
   
-  open-pull-request:
+  #Important to use
+  open-draft-pull-request:
     name: Open Pull Request
     # needs: [build-test]
     runs-on: ubuntu-latest
